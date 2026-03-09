@@ -1,0 +1,305 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Turbo",
+  "scopeName": "source.turbo",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#attributes" },
+    { "include": "#function-definition" },
+    { "include": "#struct-definition" },
+    { "include": "#type-definition" },
+    { "include": "#trait-definition" },
+    { "include": "#impl-block" },
+    { "include": "#import-statement" },
+    { "include": "#keywords" },
+    { "include": "#storage" },
+    { "include": "#constants" },
+    { "include": "#types" },
+    { "include": "#function-call" },
+    { "include": "#numbers" },
+    { "include": "#operators" },
+    { "include": "#punctuation" },
+    { "include": "#identifiers" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.turbo",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.turbo",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.turbo",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.turbo",
+              "match": "\\\\[nrt\\\\\"{}]"
+            },
+            {
+              "name": "meta.interpolation.turbo",
+              "begin": "(?<!\\\\)\\{",
+              "end": "\\}",
+              "beginCaptures": {
+                "0": { "name": "punctuation.definition.interpolation.begin.turbo" }
+              },
+              "endCaptures": {
+                "0": { "name": "punctuation.definition.interpolation.end.turbo" }
+              },
+              "patterns": [
+                { "include": "source.turbo" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "attributes": {
+      "patterns": [
+        {
+          "name": "meta.attribute.turbo",
+          "match": "@(derive|test|bench|inline|deprecated|cfg)\\b",
+          "captures": {
+            "0": { "name": "meta.attribute.turbo" },
+            "1": { "name": "entity.name.function.attribute.turbo" }
+          }
+        },
+        {
+          "name": "meta.attribute.turbo",
+          "match": "@([a-zA-Z_][a-zA-Z0-9_]*)",
+          "captures": {
+            "0": { "name": "meta.attribute.turbo" },
+            "1": { "name": "entity.name.function.attribute.turbo" }
+          }
+        }
+      ]
+    },
+    "function-definition": {
+      "patterns": [
+        {
+          "match": "\\b(pub\\s+)?(async\\s+)?fn\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+          "captures": {
+            "1": { "name": "keyword.other.pub.turbo" },
+            "2": { "name": "keyword.control.async.turbo" },
+            "3": { "name": "entity.name.function.turbo" }
+          }
+        }
+      ]
+    },
+    "struct-definition": {
+      "patterns": [
+        {
+          "match": "\\b(pub\\s+)?struct\\s+([A-Z][a-zA-Z0-9_]*)",
+          "captures": {
+            "1": { "name": "keyword.other.pub.turbo" },
+            "2": { "name": "entity.name.type.struct.turbo" }
+          }
+        }
+      ]
+    },
+    "type-definition": {
+      "patterns": [
+        {
+          "match": "\\b(pub\\s+)?type\\s+([A-Z][a-zA-Z0-9_]*)",
+          "captures": {
+            "1": { "name": "keyword.other.pub.turbo" },
+            "2": { "name": "entity.name.type.enum.turbo" }
+          }
+        }
+      ]
+    },
+    "trait-definition": {
+      "patterns": [
+        {
+          "match": "\\b(pub\\s+)?trait\\s+([A-Z][a-zA-Z0-9_]*)",
+          "captures": {
+            "1": { "name": "keyword.other.pub.turbo" },
+            "2": { "name": "entity.name.type.trait.turbo" }
+          }
+        }
+      ]
+    },
+    "impl-block": {
+      "patterns": [
+        {
+          "match": "\\bimpl\\s+([A-Z][a-zA-Z0-9_]*)",
+          "captures": {
+            "0": { "name": "meta.impl.turbo" },
+            "1": { "name": "entity.name.type.turbo" }
+          }
+        }
+      ]
+    },
+    "import-statement": {
+      "patterns": [
+        {
+          "match": "\\b(import)\\s+(.+?)\\s+(from)\\s+",
+          "captures": {
+            "1": { "name": "keyword.control.import.turbo" },
+            "2": { "name": "entity.name.import.turbo" },
+            "3": { "name": "keyword.control.from.turbo" }
+          }
+        },
+        {
+          "match": "\\b(import)\\s+",
+          "captures": {
+            "1": { "name": "keyword.control.import.turbo" }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.turbo",
+          "match": "\\b(if|else|while|for|in|return|match|spawn|defer|await)\\b"
+        },
+        {
+          "name": "keyword.other.turbo",
+          "match": "\\b(fn|let|mut|const|struct|type|impl|trait|pub|import|from|async|new|free)\\b"
+        }
+      ]
+    },
+    "storage": {
+      "patterns": [
+        {
+          "name": "storage.modifier.turbo",
+          "match": "\\b(mut|pub|async|const)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.true.turbo",
+          "match": "\\btrue\\b"
+        },
+        {
+          "name": "constant.language.boolean.false.turbo",
+          "match": "\\bfalse\\b"
+        },
+        {
+          "name": "constant.language.none.turbo",
+          "match": "\\bnone\\b"
+        },
+        {
+          "name": "constant.language.option.turbo",
+          "match": "\\b(some|ok|err)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.primitive.turbo",
+          "match": "\\b(i8|i16|i32|i64|i128|isize|u8|u16|u32|u64|u128|usize|f32|f64|bool|str|char)\\b"
+        },
+        {
+          "name": "entity.name.type.turbo",
+          "match": "\\b[A-Z][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    },
+    "function-call": {
+      "patterns": [
+        {
+          "match": "\\b([a-z_][a-zA-Z0-9_]*)\\s*\\(",
+          "captures": {
+            "1": { "name": "entity.name.function.call.turbo" }
+          }
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.turbo",
+          "match": "\\b[0-9][0-9_]*\\.[0-9][0-9_]*([eE][+-]?[0-9]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.turbo",
+          "match": "\\b[0-9][0-9_]*\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arrow.turbo",
+          "match": "->|=>"
+        },
+        {
+          "name": "keyword.operator.pipe.turbo",
+          "match": "\\|>"
+        },
+        {
+          "name": "keyword.operator.optional.turbo",
+          "match": "\\?\\.?|\\?\\?"
+        },
+        {
+          "name": "keyword.operator.comparison.turbo",
+          "match": "==|!=|<=|>=|<|>"
+        },
+        {
+          "name": "keyword.operator.logical.turbo",
+          "match": "&&|\\|\\||!"
+        },
+        {
+          "name": "keyword.operator.assignment.compound.turbo",
+          "match": "\\+=|-=|\\*=|/=|%="
+        },
+        {
+          "name": "keyword.operator.assignment.turbo",
+          "match": "="
+        },
+        {
+          "name": "keyword.operator.arithmetic.turbo",
+          "match": "\\+|-|\\*|/|%"
+        },
+        {
+          "name": "keyword.operator.range.turbo",
+          "match": "\\.\\."
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.separator.comma.turbo",
+          "match": ","
+        },
+        {
+          "name": "punctuation.separator.colon.turbo",
+          "match": ":"
+        },
+        {
+          "name": "punctuation.terminator.semicolon.turbo",
+          "match": ";"
+        },
+        {
+          "name": "punctuation.accessor.dot.turbo",
+          "match": "\\."
+        }
+      ]
+    },
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "variable.other.turbo",
+          "match": "\\b[a-z_][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    }
+  }
+}

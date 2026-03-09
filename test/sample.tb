@@ -1,0 +1,143 @@
+// Turbo language sample — tests all syntax highlighting
+// This is a line comment
+
+/* This is a
+   block comment */
+
+import { HashMap } from "std/collections"
+
+const MAX_SIZE: usize = 1024
+const PI: f64 = 3.14159
+
+@derive(Debug, Eq)
+struct User {
+    name: str
+    age: u32
+    active: bool
+}
+
+type Shape {
+    Circle(radius: f64)
+    Rectangle(width: f64, height: f64)
+    Point
+}
+
+trait Drawable {
+    fn draw(self) -> bool
+    fn area(self) -> f64
+}
+
+impl Shape {
+    pub fn describe(self) -> str {
+        match self {
+            Circle(r) => "circle"
+            Rectangle(w, h) => "rectangle"
+            _ => "unknown"
+        }
+    }
+}
+
+fn fibonacci(n: i64) -> i64 {
+    if n <= 1 {
+        n
+    } else {
+        fibonacci(n - 1) + fibonacci(n - 2)
+    }
+}
+
+fn is_prime(n: i64) -> bool {
+    if n < 2 { return false }
+    let mut i = 2
+    while i * i <= n {
+        if n % i == 0 {
+            return false
+        }
+        i += 1
+    }
+    true
+}
+
+async fn fetch_data(url: str) -> str {
+    let response = await http.get(url)
+    response.body
+}
+
+pub fn main() {
+    // Variables
+    let name = "Turbo"
+    let mut counter = 0
+    let pi: f64 = 3.14
+    let big_num = 1_000_000
+    let flag = true
+    let empty = none
+
+    // String interpolation
+    print("Hello, {name}!")
+
+    // Arithmetic
+    let result = 10 + 5 * 3 - 2 / 1
+    let modulo = 17 % 5
+    counter += 1
+    counter -= 1
+    counter *= 2
+    counter /= 2
+
+    // Comparisons and logic
+    let is_big = result > 100 && counter < 50
+    let either = flag || !is_big
+    let equal = result == 43
+    let not_eq = result != 0
+
+    // Control flow
+    if counter > 0 {
+        print(counter)
+    } else {
+        print("zero")
+    }
+
+    // While loop
+    let mut n = 0
+    while n < 10 {
+        print(n)
+        n += 1
+    }
+
+    // For loop
+    for item in items {
+        print(item)
+    }
+
+    // Match expression
+    match result {
+        0 => print("zero")
+        1 => print("one")
+        _ => print("other")
+    }
+
+    // Function calls
+    let fib_10 = fibonacci(10)
+    assert(fib_10 == 55)
+    print(fib_10)
+
+    // Optional chaining
+    let maybe_val = some(42)
+    let safe = maybe_val?.to_string() ?? "default"
+
+    // Pipe operator
+    let processed = data |> filter |> map |> collect
+
+    // Range
+    let range = 0..100
+
+    // Result handling
+    let result = ok(42)
+    let value = result ?? 0
+
+    // Spawn
+    spawn process_data(items)
+
+    // Defer
+    defer cleanup()
+
+    print("Done!")
+}

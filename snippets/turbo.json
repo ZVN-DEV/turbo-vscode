@@ -1,0 +1,182 @@
+{
+  "Main Function": {
+    "prefix": "main",
+    "body": [
+      "fn main() {",
+      "    $0",
+      "}"
+    ],
+    "description": "Main function entry point"
+  },
+  "Function Definition": {
+    "prefix": "fn",
+    "body": [
+      "fn ${1:name}(${2:params}) -> ${3:i64} {",
+      "    $0",
+      "}"
+    ],
+    "description": "Function definition"
+  },
+  "Function (void)": {
+    "prefix": "fnv",
+    "body": [
+      "fn ${1:name}(${2:params}) {",
+      "    $0",
+      "}"
+    ],
+    "description": "Function definition (no return type)"
+  },
+  "Public Function": {
+    "prefix": "pubfn",
+    "body": [
+      "pub fn ${1:name}(${2:params}) -> ${3:i64} {",
+      "    $0",
+      "}"
+    ],
+    "description": "Public function definition"
+  },
+  "Async Function": {
+    "prefix": "asyncfn",
+    "body": [
+      "async fn ${1:name}(${2:params}) -> ${3:i64} {",
+      "    $0",
+      "}"
+    ],
+    "description": "Async function definition"
+  },
+  "Let Binding": {
+    "prefix": "let",
+    "body": "let ${1:name} = ${2:value}",
+    "description": "Immutable variable binding"
+  },
+  "Let Mutable": {
+    "prefix": "letm",
+    "body": "let mut ${1:name} = ${2:value}",
+    "description": "Mutable variable binding"
+  },
+  "Let Typed": {
+    "prefix": "lett",
+    "body": "let ${1:name}: ${2:i64} = ${3:value}",
+    "description": "Typed variable binding"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": [
+      "if ${1:condition} {",
+      "    $0",
+      "}"
+    ],
+    "description": "If statement"
+  },
+  "If-Else": {
+    "prefix": "ife",
+    "body": [
+      "if ${1:condition} {",
+      "    $2",
+      "} else {",
+      "    $0",
+      "}"
+    ],
+    "description": "If-else statement"
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": [
+      "while ${1:condition} {",
+      "    $0",
+      "}"
+    ],
+    "description": "While loop"
+  },
+  "For Loop": {
+    "prefix": "for",
+    "body": [
+      "for ${1:item} in ${2:collection} {",
+      "    $0",
+      "}"
+    ],
+    "description": "For-in loop"
+  },
+  "Match Expression": {
+    "prefix": "match",
+    "body": [
+      "match ${1:value} {",
+      "    ${2:pattern} => ${3:expr}",
+      "    _ => ${0:default}",
+      "}"
+    ],
+    "description": "Match expression"
+  },
+  "Struct Definition": {
+    "prefix": "struct",
+    "body": [
+      "struct ${1:Name} {",
+      "    ${2:field}: ${3:type}",
+      "}"
+    ],
+    "description": "Struct definition"
+  },
+  "Type (Enum) Definition": {
+    "prefix": "type",
+    "body": [
+      "type ${1:Name} {",
+      "    ${2:Variant}(${3:fields})",
+      "}"
+    ],
+    "description": "Algebraic type definition"
+  },
+  "Impl Block": {
+    "prefix": "impl",
+    "body": [
+      "impl ${1:Type} {",
+      "    $0",
+      "}"
+    ],
+    "description": "Implementation block"
+  },
+  "Trait Definition": {
+    "prefix": "trait",
+    "body": [
+      "trait ${1:Name} {",
+      "    fn ${2:method}(${3:self}) -> ${4:type}",
+      "}"
+    ],
+    "description": "Trait definition"
+  },
+  "Print": {
+    "prefix": "pr",
+    "body": "print(${1:value})",
+    "description": "Print a value"
+  },
+  "Print String": {
+    "prefix": "prs",
+    "body": "print(\"${1:message}\")",
+    "description": "Print a string"
+  },
+  "Assert": {
+    "prefix": "assert",
+    "body": "assert(${1:condition})",
+    "description": "Assert condition"
+  },
+  "Import": {
+    "prefix": "import",
+    "body": "import ${1:module} from \"${2:path}\"",
+    "description": "Import statement"
+  },
+  "Const": {
+    "prefix": "const",
+    "body": "const ${1:NAME}: ${2:type} = ${3:value}",
+    "description": "Constant declaration"
+  },
+  "Counter Loop": {
+    "prefix": "loop",
+    "body": [
+      "let mut ${1:i} = ${2:0}",
+      "while ${1:i} < ${3:n} {",
+      "    $0",
+      "    ${1:i} += 1",
+      "}"
+    ],
+    "description": "Counter-based while loop"
+  }
+}

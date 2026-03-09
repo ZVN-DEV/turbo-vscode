@@ -1,0 +1,70 @@
+{
+  "name": "turbo-lang",
+  "displayName": "Turbo Language",
+  "description": "Language support for Turbo (.tb) — syntax highlighting, snippets, and language configuration",
+  "version": "0.1.0",
+  "publisher": "zvndev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZVN-DEV/turbo-vscode"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "turbo",
+    "turbo-lang",
+    "tb",
+    "systems programming",
+    "compiled language"
+  ],
+  "icon": "icons/turbo-icon.png",
+  "contributes": {
+    "languages": [
+      {
+        "id": "turbo",
+        "aliases": [
+          "Turbo",
+          "turbo"
+        ],
+        "extensions": [
+          ".tb"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "toml",
+        "filenames": [
+          "turbo.toml"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "turbo",
+        "scopeName": "source.turbo",
+        "path": "./syntaxes/turbo.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "turbo",
+        "path": "./snippets/turbo.json"
+      }
+    ],
+    "iconThemes": [],
+    "configurationDefaults": {
+      "[turbo]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": false,
+        "editor.semanticHighlighting.enabled": true
+      }
+    }
+  }
+}
