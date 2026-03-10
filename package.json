@@ -1,20 +1,25 @@
 {
   "name": "turbo-lang",
   "displayName": "Turbo Language",
-  "description": "Language support for Turbo (.tb) — syntax highlighting, snippets, and language configuration",
-  "version": "0.1.0",
+  "description": "Language support for Turbo (.tb) — syntax highlighting, snippets, LSP diagnostics, and completions",
+  "version": "0.2.0",
   "publisher": "zvndev",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ZVN-DEV/turbo-vscode"
+    "url": "git+https://github.com/ZVN-DEV/turbo-vscode.git"
   },
+  "bugs": {
+    "url": "https://github.com/ZVN-DEV/turbo-vscode/issues"
+  },
+  "homepage": "https://github.com/ZVN-DEV/turbo-vscode#readme",
   "engines": {
-    "vscode": "^1.75.0"
+    "vscode": "^1.85.0"
   },
   "categories": [
     "Programming Languages",
-    "Snippets"
+    "Snippets",
+    "Linters"
   ],
   "keywords": [
     "turbo",
@@ -24,6 +29,10 @@
     "compiled language"
   ],
   "icon": "icons/turbo-icon.png",
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:turbo"
+  ],
   "contributes": {
     "languages": [
       {
@@ -57,7 +66,16 @@
         "path": "./snippets/turbo.json"
       }
     ],
-    "iconThemes": [],
+    "configuration": {
+      "title": "Turbo",
+      "properties": {
+        "turbo.lspPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the turbo-lsp binary. Leave empty to auto-detect."
+        }
+      }
+    },
     "configurationDefaults": {
       "[turbo]": {
         "editor.tabSize": 4,
@@ -66,5 +84,19 @@
         "editor.semanticHighlighting.enabled": true
       }
     }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.4.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.7.1",
+    "typescript": "^5.9.3"
   }
 }
