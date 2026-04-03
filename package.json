@@ -2,7 +2,7 @@
   "name": "turbo-lang",
   "displayName": "Turbo Language",
   "description": "Language support for Turbo (.tb) — syntax highlighting, snippets, LSP diagnostics, and completions",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "publisher": "zvndev",
   "license": "MIT",
   "repository": {
@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/ZVN-DEV/turbo-vscode/issues"
   },
-  "homepage": "https://github.com/ZVN-DEV/turbo-vscode#readme",
+  "homepage": "https://turbolang.dev",
   "engines": {
     "vscode": "^1.85.0"
   },
