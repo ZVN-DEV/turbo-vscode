@@ -69,7 +69,7 @@
       "patterns": [
         {
           "name": "meta.attribute.turbo",
-          "match": "@(derive|test|bench|inline|deprecated|cfg)\\b",
+          "match": "@(derive|test|bench|inline|deprecated|cfg|unsafe|tool)\\b",
           "captures": {
             "0": { "name": "meta.attribute.turbo" },
             "1": { "name": "entity.name.function.attribute.turbo" }
@@ -163,11 +163,11 @@
       "patterns": [
         {
           "name": "keyword.control.turbo",
-          "match": "\\b(if|else|while|for|in|return|match|spawn|defer|await)\\b"
+          "match": "\\b(if|else|while|for|in|return|match|spawn|defer|await|break|continue)\\b"
         },
         {
           "name": "keyword.other.turbo",
-          "match": "\\b(fn|let|mut|const|struct|type|impl|trait|pub|import|from|async|new|free)\\b"
+          "match": "\\b(fn|let|mut|const|struct|enum|type|impl|trait|pub|import|from|async|agent|tool|unsafe)\\b"
         }
       ]
     },
