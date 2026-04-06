@@ -167,7 +167,7 @@
         },
         {
           "name": "keyword.other.turbo",
-          "match": "\\b(fn|let|mut|const|struct|enum|type|impl|trait|pub|import|from|async|agent|tool|unsafe)\\b"
+          "match": "\\b(fn|let|mut|const|struct|enum|type|impl|trait|pub|import|from|async|agent|tool|unsafe|extern)\\b"
         }
       ]
     },
