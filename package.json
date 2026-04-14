@@ -2,7 +2,7 @@
   "name": "turbo-lang",
   "displayName": "Turbo Language",
   "description": "Language support for Turbo (.tb) — syntax highlighting, snippets, LSP diagnostics, and completions",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "publisher": "zvndev",
   "license": "MIT",
   "repository": {
